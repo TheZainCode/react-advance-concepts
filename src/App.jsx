@@ -4,6 +4,7 @@ import RenderCount from "./components/RenderCount";
 import PreviousValue from "./components/PreviousValue";
 import DebounceSearch from "./components/DebounceSearch";
 import StorageDemo from "./components/StorageDemo";
+import Dropdown from "./components/Dropdown";
 function App(){
   return(
     <main>
@@ -13,6 +14,7 @@ function App(){
       <PreviousValue />
       <DebounceSearch />
       <StorageDemo />
+      <Dropdown />
     </main>
   );
 }
