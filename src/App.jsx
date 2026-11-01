@@ -7,6 +7,7 @@ import StorageDemo from "./components/StorageDemo";
 import Dropdown from "./components/Dropdown";
 import ToggleDemo from "./components/ToggleDemo";
 import RenderDemo from "./components/RenderDemo";
+import MemoDemo from "./components/MemoDemo";
 function App(){
   return(
     <main>
@@ -19,6 +20,7 @@ function App(){
       <Dropdown />
       <ToggleDemo />
       <RenderDemo />
+      <MemoDemo />
     </main>
   );
 }
