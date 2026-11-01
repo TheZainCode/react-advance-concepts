@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
 const Child = memo(function Child({ onAction }) {
   console.log("Child rendered");
@@ -15,9 +15,9 @@ function RenderDemo() {
 
   console.log("Parent rendered");
 
-  const handleAction = () => {
+  const handleAction = useCallback(() => {
     console.log("Child action executed");
-  };
+  }, []);
 
   return (
     <div className="space-y-4 p-6">
