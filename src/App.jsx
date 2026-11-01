@@ -8,6 +8,7 @@ import Dropdown from "./components/Dropdown";
 import ToggleDemo from "./components/ToggleDemo";
 import RenderDemo from "./components/RenderDemo";
 import MemoDemo from "./components/MemoDemo";
+import KeyDemo from "./components/KeyDemo";
 function App(){
   return(
     <main>
@@ -21,6 +22,7 @@ function App(){
       <ToggleDemo />
       <RenderDemo />
       <MemoDemo />
+      <KeyDemo />
     </main>
   );
 }
