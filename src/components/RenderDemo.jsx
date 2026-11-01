@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from "react";
+import { Profiler, memo, useCallback, useState } from "react";
 
 const Child = memo(function Child({ onAction }) {
   console.log("Child rendered");
@@ -13,22 +13,36 @@ const Child = memo(function Child({ onAction }) {
 function RenderDemo() {
   const [count, setCount] = useState(0);
 
-  console.log("Parent rendered");
-
   const handleAction = useCallback(() => {
     console.log("Child action executed");
   }, []);
 
+  const handleRender = (
+    id,
+    phase,
+    actualDuration,
+    baseDuration
+  ) => {
+    console.log({
+      id,
+      phase,
+      actualDuration,
+      baseDuration,
+    });
+  };
+
   return (
-    <div className="space-y-4 p-6">
-      <h2>Count: {count}</h2>
+    <Profiler id="RenderDemo" onRender={handleRender}>
+      <div className="space-y-4 p-6">
+        <h2>Count: {count}</h2>
 
-      <button onClick={() => setCount((prev) => prev + 1)}>
-        Increase
-      </button>
+        <button onClick={() => setCount((prev) => prev + 1)}>
+          Increase
+        </button>
 
-      <Child onAction={handleAction} />
-    </div>
+        <Child onAction={handleAction} />
+      </div>
+    </Profiler>
   );
 }
 
