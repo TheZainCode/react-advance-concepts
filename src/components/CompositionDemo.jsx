@@ -1,10 +1,10 @@
-import Card from "../components/Card";
+import Card from "./Card";
 function CompositionDemo(){
     return(
         <div className="grid gap-4 p-6 md:grid-cols-2">
-            <Card title="Profile">
-                <h3 className="text-xl text-blue-600 font-bold">Zain</h3>
-                <p>Role: Frontend Developer</p>
+            <Card title="Profile" footer={<button>Edit Profile</button>}>
+            <p>Name: Zain</p>
+            <p>Role: Frontend Developer</p>
             </Card>
             <Card title="Skills">
                 <p>React</p>
