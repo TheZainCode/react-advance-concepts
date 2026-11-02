@@ -11,6 +11,7 @@ import MemoDemo from "./components/MemoDemo";
 import KeyDemo from "./components/KeyDemo";
 import IndexKeyDemo from "./components/IndexKeyDemo";
 import StateRestDemo from "./components/StateRestDemo";
+import CompositionDemo from "./components/CompositionDemo";
 function App(){
   return(
     <main>
@@ -27,6 +28,7 @@ function App(){
       <KeyDemo />
       <IndexKeyDemo />
       <StateRestDemo />
+      <CompositionDemo />
     </main>
   );
 }
