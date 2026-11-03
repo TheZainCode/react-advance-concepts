@@ -12,6 +12,7 @@ import KeyDemo from "./components/KeyDemo";
 import IndexKeyDemo from "./components/IndexKeyDemo";
 import StateRestDemo from "./components/StateRestDemo";
 import CompositionDemo from "./components/CompositionDemo";
+import ProductContainer from "./components/ProductContainer";
 function App(){
   return(
     <main>
@@ -29,6 +30,7 @@ function App(){
       <IndexKeyDemo />
       <StateRestDemo />
       <CompositionDemo />
+      <ProductContainer />
     </main>
   );
 }
