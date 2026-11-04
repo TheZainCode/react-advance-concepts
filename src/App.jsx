@@ -13,6 +13,7 @@ import IndexKeyDemo from "./components/IndexKeyDemo";
 import StateRestDemo from "./components/StateRestDemo";
 import CompositionDemo from "./components/CompositionDemo";
 import ProductContainer from "./components/ProductContainer";
+import ProductsPage from "./features/products/pages/ProductsPage";
 function App(){
   return(
     <main>
@@ -31,6 +32,7 @@ function App(){
       <StateRestDemo />
       <CompositionDemo />
       <ProductContainer />
+      <ProductsPage />
     </main>
   );
 }
