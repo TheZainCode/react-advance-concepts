@@ -14,7 +14,10 @@ import StateRestDemo from "./components/StateRestDemo";
 import CompositionDemo from "./components/CompositionDemo";
 import ProductContainer from "./components/ProductContainer";
 import ProductsPage from "./features/products/pages/ProductsPage";
+import { useSelector } from "react-redux";
 function App(){
+  const user=useSelector((state)=>state.auth.user);
+  const isAuthenticated=useSelector((state)=>state.auth.isAuthenticated);
   return(
     <main>
       <CartStatus />
@@ -33,6 +36,11 @@ function App(){
       <CompositionDemo />
       <ProductContainer />
       <ProductsPage />
+      <div className="p-6 space-y-3">
+        <h1 className="text-2xl font-bold">Redux Authentication</h1>
+        <p>User: {user ? user.name : "Guest"}</p>
+        <p>Status: {isAuthenticated ? "Logged In" : "Logged Out"}</p>
+      </div>
     </main>
   );
 }
