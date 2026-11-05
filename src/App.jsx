@@ -16,10 +16,24 @@ import ProductContainer from "./components/ProductContainer";
 import ProductsPage from "./features/products/pages/ProductsPage";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout } from "./features/auth/authSlice";
+import { setProducts, clearProducts } from "./features/products/productSlice";
 function App(){
     const user=useSelector((state)=>state.auth.user);
     const isAuthenticated=useSelector((state)=>state.auth.isAuthenticated);
+    const products=useSelector((state)=>state.products.products);
     const dispatch=useDispatch();
+    const handleAddProducts=()=>{
+        dispatch(
+            setProducts([
+                {id: 1, title: "Laptop", price: 800},
+                {id: 2, title: "Keyboard", price: 50},
+                {id: 3, title: "Mouse", price: 25},
+            ])
+        );
+    };
+    const handleClearProducts=()=>{
+        dispatch(clearProducts());
+    }
     const handleLogin=()=>{
         dispatch(
             login({
@@ -60,6 +74,14 @@ function App(){
             <button onClick={handelLogout}>Logout</button>) : (
                 <button onClick={handleLogin}>Login</button>
             )}
+        <h1 className="font-bold text-3xl">Redux Products</h1>
+        <button onClick={handleAddProducts}>Load Products</button>
+        <button onClick={handleClearProducts}>Clear Poducts</button>
+        <ul className="space-y-2">
+            {products.map((product)=>(
+                <li key={product.id}>{product.title}- ${product.price}</li>
+            ))}
+        </ul>
       </div>
     </main>
   );
