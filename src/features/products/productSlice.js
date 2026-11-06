@@ -2,19 +2,23 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async () => {
+  async (_, {rejectWithValue}) => {
+    try{
     const response = await fetch(
       "https://dummyjson.com/products"
     );
 
     if (!response.ok) {
-      throw new Error("Failed to fetch products");
+      return rejectWithValue("Unable to fetch products");
     }
 
     const data = await response.json();
 
     return data.products;
+  }catch(error){
+    return rejectWithValue("Network error. Please try again.")
   }
+}
 );
 const initialState = {
   products: [],
@@ -38,7 +42,7 @@ const productSlice = createSlice({
     })
     .addCase(fetchProducts.rejected, (state, action)=>{
       state.loading=false;
-      state.error=action.error.message;
+      state.error=action.payload || action.error.message;
     });
   },
   
