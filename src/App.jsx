@@ -13,6 +13,16 @@ function App() {
     dispatch(fetchProducts());
   }, [dispatch]);
 
+
+  const handleFetchWithUnwrap=async ()=>{
+    try{
+      console.log("Fetching products using .unwrap()...");
+      const data=await dispatch(fetchProducts()).unwrap();
+      console.log("Success! Products received:", data);
+    }catch(error){
+      console.log("Request failed with .unwrap():", error);
+    }
+  }
   if (loading) {
     return <p>Loading products...</p>;
   }
@@ -26,7 +36,8 @@ function App() {
       <h1 className="text-2xl font-bold mb-4">
         Redux API Products
       </h1>
-
+      
+      <button onClick={handleFetchWithUnwrap} className="border">Fetch Products With unwrap</button>
       <div className="grid gap-4">
         {products.map((product) => (
           <div key={product.id} className="border p-4 rounded">
