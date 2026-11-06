@@ -30,7 +30,12 @@ function App() {
   if (error) {
     return <p>Error: {error}</p>;
   }
-
+ 
+  const handleMultipleRequests = () => {
+  dispatch(fetchProducts());
+  dispatch(fetchProducts());
+  dispatch(fetchProducts());
+};
   return (
     <main className="p-6">
       <h1 className="text-2xl font-bold mb-4">
@@ -38,6 +43,9 @@ function App() {
       </h1>
       
       <button onClick={handleFetchWithUnwrap} className="border">Fetch Products With unwrap</button>
+      <button onClick={handleMultipleRequests}>
+  Test Multiple Requests
+</button>
       <div className="grid gap-4">
         {products.map((product) => (
           <div key={product.id} className="border p-4 rounded">
