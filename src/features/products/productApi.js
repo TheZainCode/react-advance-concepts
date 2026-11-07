@@ -6,10 +6,12 @@ export const productsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://dummyjson.com/",
   }),
-
+ 
+  tagTypes: ['Products'],
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: () => "products",
+      providesTags: ['Products'],
     }),
     addProduct: builder.mutation({
         query: (newProduct)=>({
@@ -17,6 +19,7 @@ export const productsApi = createApi({
             method: "POST",
             body: newProduct,
         }),
+        invalidatesTags: ['Products'],
     }),
   }),
 });
