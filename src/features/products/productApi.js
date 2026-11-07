@@ -14,6 +14,9 @@ export const productsApi = createApi({
       transformResponse: (response) => response.products,
       providesTags: ['Products'],
     }),
+    getProductById: builder.query({
+        query: (id)=> `products/${id}`,
+    }),
     addProduct: builder.mutation({
         query: (newProduct)=>({
             url:"products/add",
@@ -24,4 +27,4 @@ export const productsApi = createApi({
     }),
   }),
 });
-export const { useGetProductsQuery, useAddProductMutation }=productsApi;
+export const { useGetProductsQuery, useAddProductMutation, useGetProductByIdQuery }=productsApi;

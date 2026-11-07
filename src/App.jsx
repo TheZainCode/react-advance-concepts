@@ -1,7 +1,10 @@
-import {useGetProductsQuery, useAddProductMutation}  from "./features/products/productApi";
+import { useParams } from "react-router-dom";
+import {useGetProductsQuery, useAddProductMutation, useGetProductByIdQuery}  from "./features/products/productApi";
 function App(){
   const [addProduct, { isLoading: isAdding, error: addError }] =
   useAddProductMutation();
+  const { productId }=useParams();
+  const {data:info, isLoading: loding, error: isError}=useGetProductByIdQuery(productId);
   const  { data, error, isLoading, isFetching, refetch, }=useGetProductsQuery();
   if(isLoading){
     return <p>Loading Products...</p>
