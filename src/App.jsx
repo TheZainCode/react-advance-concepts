@@ -2,7 +2,7 @@ import {useGetProductsQuery, useAddProductMutation}  from "./features/products/p
 function App(){
   const [addProduct, { isLoading: isAdding, error: addError }] =
   useAddProductMutation();
-  const  { data, error, isLoading }=useGetProductsQuery();
+  const  { data, error, isLoading, isFetching, refetch, }=useGetProductsQuery();
   if(isLoading){
     return <p>Loading Products...</p>
   }
@@ -27,6 +27,7 @@ function App(){
         <article key={product.id}>{product.title}</article>
       ))}
       <button onClick={handleAddProduct}>{isAdding ? "Adding..." : "Add Product"}</button>
+      <button onClick={()=>refetch()}>{isFetching ? "fetching...": "Refresh Products"}</button>
     </main>
   )
 }
