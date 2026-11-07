@@ -11,6 +11,7 @@ export const productsApi = createApi({
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: () => "products",
+      transformResponse: (response) => response.products,
       providesTags: ['Products'],
     }),
     addProduct: builder.mutation({

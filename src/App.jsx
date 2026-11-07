@@ -23,7 +23,7 @@ function App(){
   return(
     <main>
       <h1>Products</h1>
-      {data?.products?.map((product)=>(
+      {data?.map((product)=>(
         <article key={product.id}>{product.title}</article>
       ))}
       <button onClick={handleAddProduct}>{isAdding ? "Adding..." : "Add Product"}</button>
